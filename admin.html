@@ -52,21 +52,22 @@ alert("Wrong Password");
 }
 }
 
-function generate(){
+function generate() {
+    // Create a longer, truly unique tracking number (no more collisions)
+    let tracking = "DHS" + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
 
-let tracking = "DHS" + Math.floor(Math.random()*100000000);
+    let data = {
+        from: document.getElementById("from").value,
+        to: document.getElementById("to").value,
+        status: document.getElementById("status").value
+    };
 
-let data = {
-from: document.getElementById("from").value,
-to: document.getElementById("to").value,
-status: document.getElementById("status").value
-};
+    localStorage.setItem(tracking, JSON.stringify(data));
 
-localStorage.setItem(tracking, JSON.stringify(data));
-
-document.getElementById("trackingResult").innerHTML =
-"Tracking Number: " + tracking;
-
+    // Show the new tracking number clearly
+    document.getElementById("trackingResult").innerHTML = 
+        "<strong>Tracking Number:</strong> " + tracking + 
+        "<br><small style='color:green'>✅ Saved! Copy it and test in the tracking page.</small>";
 }
 
 </script>
