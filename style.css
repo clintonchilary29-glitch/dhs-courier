@@ -1,0 +1,38 @@
+body{
+font-family: Arial;
+margin:0;
+background:#f4f4f4;
+}
+
+header{
+background:#ffcc00;
+padding:20px;
+text-align:center;
+}
+
+.container{
+background:white;
+padding:20px;
+margin:30px auto;
+max-width:500px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input, select{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+background:black;
+color:white;
+padding:10px;
+border:none;
+cursor:pointer;
+width:100%;
+}
+
+button:hover{
+background:#333;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DHS Admin</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>DHS Admin Panel</h1>
+</header>
+
+<div class="container">
+
+<h2>Admin Login</h2>
+
+<input type="password" id="password" placeholder="Enter Password">
+<button onclick="login()">Login</button>
+
+<div id="adminPanel" style="display:none">
+
+<h2>Create Shipment</h2>
+
+<input type="text" id="from" placeholder="Sender">
+<input type="text" id="to" placeholder="Receiver">
+
+<select id="status">
+<option>Processing</option>
+<option>In Transit</option>
+<option>Out for Delivery</option>
+<option>Delivered</option>
+</select>
+
+<button onclick="generate()">Generate Tracking</button>
+
+<div id="trackingResult"></div>
+
+</div>
+
+<script>
+
+function login(){
+let password = document.getElementById("password").value;
+
+if(password === "admin123"){
+document.getElementById("adminPanel").style.display = "block";
+} else {
+alert("Wrong Password");
+}
+}
+
+function generate(){
+
+let tracking = "DHS" + Math.floor(Math.random()*100000000);
+
+let data = {
+from: document.getElementById("from").value,
+to: document.getElementById("to").value,
+status: document.getElementById("status").value
+};
+
+localStorage.setItem(tracking, JSON.stringify(data));
+
+document.getElementById("trackingResult").innerHTML =
+"Tracking Number: " + tracking;
+
+}
+
+</script>
+</body>
+</html>

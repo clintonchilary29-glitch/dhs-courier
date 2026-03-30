@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DHS Courier Tracking</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>DHS Courier</h1>
+<p>Fast & Secure Delivery</p>
+</header>
+
+<div class="container">
+<h2>Track Your Shipment</h2>
+
+<input type="text" id="trackingInput" placeholder="Enter Tracking Number">
+<button onclick="track()">Track</button>
+
+<div id="result"></div>
+</div>
+
+<script>
+
+function track() {
+let tracking = document.getElementById("trackingInput").value;
+
+let data = JSON.parse(localStorage.getItem(tracking));
+
+if(data){
+document.getElementById("result").innerHTML =
+`
+<p><strong>Status:</strong> ${data.status}</p>
+<p><strong>From:</strong> ${data.from}</p>
+<p><strong>To:</strong> ${data.to}</p>
+`;
+} else {
+document.getElementById("result").innerHTML = "Tracking not found";
+}
+
+}
+
+</script>
+
+</body>
+</html>
